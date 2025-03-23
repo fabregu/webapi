@@ -1,0 +1,20 @@
+# Archivos generados por .NET
+bin/
+obj/
+
+# Archivos de configuración de Visual Studio
+.vs/
+.vscode/
+.idea/
+
+# Archivos de configuración de usuario
+*user secrets*
+
+# Archivos de compilación y configuración
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Archivos de paquetes NuGet
+*.nupkg
