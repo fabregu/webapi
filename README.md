@@ -9,6 +9,6 @@ SISTEMA DE WEB API
 
 ## Instalación
 
-Aplicacion Web API de Registro y Login de usuario, Lista de Prodcutoc, JWT, DBFirst, con Entity FrameworkCore en Visual Studio 2019.
+Aplicacion Web API de Registro y Login de usuario, Lista de Prodcutoc, JWT, DBFirst, con Entity FrameworkCore en Visual Studio 2022.
 
 

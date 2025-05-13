@@ -15,7 +15,7 @@ namespace WebApi.Custom
             _configuration = configuration;
         }
 
-        public string encriptarSHA256(string texto) 
+        public string encriptarSHA256(string texto)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
@@ -49,6 +49,31 @@ namespace WebApi.Custom
             );
 
             return new JwtSecurityTokenHandler().WriteToken(jwtConfig);
+        }
+
+        public bool validarToken(string token)
+        {
+            var claimsPrincipal = new ClaimsPrincipal();
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var validationParamenters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!)),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+
+            try
+            {
+                claimsPrincipal = tokenHandler.ValidateToken(token, validationParamenters, out SecurityToken validatedToken);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

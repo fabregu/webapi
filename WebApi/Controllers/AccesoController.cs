@@ -67,5 +67,13 @@ namespace WebApi.Controllers
             else
                 return StatusCode(StatusCodes.Status200OK, new { isSuccess = true, token = _utilidades.generarToken(usuarioEncontrado) });
         }
+
+        [HttpGet]
+        [Route("ValidarToken")]
+        public IActionResult ValidarToken([FromQuery] string token)
+        {
+            bool respuesta = _utilidades.validarToken(token);
+            return StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+        }
     }
 }
